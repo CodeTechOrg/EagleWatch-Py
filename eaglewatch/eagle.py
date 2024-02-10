@@ -27,7 +27,7 @@ class Eagle(object):
 
     def __init__(self) -> None:
         response = requests.get(
-            f"https://eaglewatch-production.up.railway.app/"
+            f"https://eaglewatch-1081dedcfdfb.herokuapp.com/"
         )
         if resp.status_code != 201:
             self._error_(resp)
@@ -36,7 +36,7 @@ class Eagle(object):
        
     
     def getinfo(self, UserId: int) -> Union[Banned, bool]:
-        resp = requests.get(f"https://eaglewatch-production.up.railway.app/info/{UserId}")
+        resp = requests.get(f"https://eaglewatch-1081dedcfdfb.herokuapp.com/info/{UserId}")
         if resp.status_code == 201:
             if resp.json()["banned"]:
                 return Banned(**response.json())
@@ -56,7 +56,7 @@ class Eagle(object):
             "Eagle_Token" : Eagle_Token
         }
 
-        resp = requests.post("https://eaglewatch-production.up.railway.app/addban", data=data)
+        resp = requests.post("https://eaglewatch-1081dedcfdfb.herokuapp.com/addban", data=data)
         if resp.status_code == 201:
             return True
         else:
@@ -73,7 +73,7 @@ class Eagle(object):
         }
 
 
-        resp = requests.post("https://eaglewatch-production.up.railway.app/updateban", data=data).json()
+        resp = requests.post("https://eaglewatch-1081dedcfdfb.herokuapp.com/updateban", data=data).json()
         if resp.status_code == 201:
             return True
         else:
@@ -85,7 +85,7 @@ class Eagle(object):
             "Eagle_Token" : Eagle_Token
         }
 
-        resp = requests.delete("https://eaglewatch-production.up.railway.app/removeban", data=data)
+        resp = requests.delete("https://eaglewatch-1081dedcfdfb.herokuapp.com/removeban", data=data)
         if resp.status_code == 201:
             return True
         else:
